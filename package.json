@@ -1,0 +1,38 @@
+{
+  "name": "gz-eval",
+  "version": "1.0.0",
+  "description": "Production-grade evaluation framework for AI systems — golden test sets, quality metrics, A/B comparison, regression detection",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "gz-eval": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "bun test",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": [
+    "ai",
+    "evaluation",
+    "metrics",
+    "testing",
+    "llm",
+    "quality",
+    "benchmark",
+    "a-b-testing",
+    "hallucination",
+    "faithfulness",
+    "precision",
+    "recall"
+  ],
+  "author": "Ground Zero LLC",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.7.0"
+  }
+}

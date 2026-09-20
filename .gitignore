@@ -1,0 +1,49 @@
+# gz-eval
+
+Production-grade evaluation framework for AI systems — golden test sets, quality metrics, A/B comparison, regression detection.
+
+## Install
+
+```bash
+bun add gz-eval
+```
+
+## Quick Start
+
+```typescript
+import { EvalSuite } from 'gz-eval'
+
+const suite = new EvalSuite({
+  name: 'My Suite',
+  metrics: ['precision', 'recall', 'faithfulness', 'relevance', 'hallucination'],
+  threshold: 0.7,
+  concurrency: 5,
+  timeout: 30000,
+  provider: { name: 'openai', model: 'gpt-4o-mini' },
+})
+
+await suite.loadCases([
+  {
+    id: 'case-1',
+    query: 'What is 2+2?',
+    expectedAnswer: '4',
+    expectedContext: ['2+2 equals 4'],
+  },
+])
+
+const report = await suite.run()
+console.log(`Pass rate: ${(report.summary.passRate * 100).toFixed(1)}%`)
+```
+
+## CLI
+
+```bash
+npx gz-eval init                    # Generate example suite
+npx gz-eval run suite.json          # Run evaluation
+npx gz-eval compare a.json b.json   # A/B compare
+npx gz-eval report results.json     # HTML report
+```
+
+## License
+
+MIT
